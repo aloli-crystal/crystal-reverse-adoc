@@ -1,0 +1,6 @@
+name: crystal-reverse-adoc
+title: 'Reverse AsciiDoc'
+version: '2.0.0'
+nav:
+  - modules/ROOT/nav.adoc
+  - modules/fr/nav.adoc

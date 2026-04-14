@@ -1,0 +1,33 @@
+= Utilisation
+
+== En tant que bibliotheque
+
+[source,crystal]
+----
+require "reverse_adoc"
+
+html = "<h1>Titre</h1><p>Un paragraphe avec du texte en <strong>gras</strong>.</p>"
+adoc = ReverseAdoc.convert(html)
+puts adoc
+----
+
+== Support Word .docx
+
+[source,crystal]
+----
+require "reverse_adoc"
+
+adoc = ReverseAdoc.convert_docx("document.docx")
+puts adoc
+----
+
+== Ligne de commande
+
+[source,shell]
+----
+crystal-reverse-adoc input.html
+crystal-reverse-adoc input.html -o output.adoc
+crystal-reverse-adoc document.docx
+crystal-reverse-adoc -v
+crystal-reverse-adoc -h
+----

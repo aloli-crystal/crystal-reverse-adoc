@@ -1,0 +1,45 @@
+= Reverse AsciiDoc
+
+Convertit du HTML et des documents Microsoft Word en AsciiDoc. Portage Crystal du gem Ruby https://github.com/xijo/reverse_adoc[reverse_adoc] (v2.0.0).
+
+== Fonctionnalites
+
+* Conversion HTML vers AsciiDoc
+* Support Microsoft Word `.docx`
+* Titres, paragraphes, gras, italique, code
+* Blocs source avec detection du langage
+* Liens, images, listes (ordonnees, non ordonnees, de definitions)
+* Tableaux, citations, avertissements
+* Exposant, indice, texte barre
+* Interface en ligne de commande
+
+== Elements supportes
+
+[cols="1,1"]
+|===
+| HTML | AsciiDoc
+
+| `<h1>` a `<h6>` | `= Titre` a `====== Titre`
+| `<p>` | Paragraphe
+| `<strong>`, `<b>` | `*gras*`
+| `<em>`, `<i>` | `_italique_`
+| `<code>` | `\`code\``
+| `<pre><code>` | Bloc source avec detection du langage
+| `<a href>` | `link:url[texte]` ou `https://url[texte]`
+| `<img>` | `image::src[alt]`
+| `<ul>/<li>` | `* element`
+| `<ol>/<li>` | `. element`
+| `<dl>/<dt>/<dd>` | `terme:: definition`
+| `<table>` | Tableau AsciiDoc
+| `<blockquote>` | Bloc de citation
+| `<hr>` | `'''`
+| `<br>` | Saut de ligne
+| `<sup>` | `^texte^`
+| `<sub>` | `~texte~`
+| `<del>`, `<s>` | `[.line-through]#texte#`
+| Divs d'avertissement | `NOTE:`, `TIP:`, etc.
+|===
+
+== Licence
+
+MIT
