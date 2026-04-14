@@ -1,0 +1,24 @@
+name: Check upstream reverse_adoc gem
+
+on:
+  schedule:
+    - cron: "0 8 * * 1" # Every Monday at 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check latest reverse_adoc gem version
+        run: |
+          LATEST=$(curl -s https://rubygems.org/api/v1/versions/reverse_adoc/latest.json | jq -r '.version')
+          CURRENT="2.0.0"
+          echo "Latest upstream: $LATEST"
+          echo "Current port:    $CURRENT"
+          if [ "$LATEST" != "$CURRENT" ]; then
+            echo "::warning::reverse_adoc gem has been updated to $LATEST (current port: $CURRENT)"
+          else
+            echo "Up to date with upstream."
+          fi

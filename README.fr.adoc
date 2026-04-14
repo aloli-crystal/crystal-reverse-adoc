@@ -1,0 +1,89 @@
+= crystal-reverse-adoc
+
+Convertit du HTML en AsciiDoc. Portage Crystal du gem Ruby https://github.com/xijo/reverse_adoc[reverse_adoc] (v2.0.0).
+
+== Installation
+
+Ajoutez la dependance dans votre `shard.yml` :
+
+[source,yaml]
+----
+dependencies:
+  crystal-reverse-adoc:
+    github: aloli-crystal/crystal-reverse-adoc
+----
+
+Lancez `shards install`.
+
+== Utilisation
+
+=== En tant que bibliotheque
+
+[source,crystal]
+----
+require "reverse_adoc"
+
+html = "<h1>Titre</h1><p>Un paragraphe avec du texte en <strong>gras</strong>.</p>"
+adoc = ReverseAdoc.convert(html)
+puts adoc
+----
+
+=== Support Word .docx
+
+[source,crystal]
+----
+require "reverse_adoc"
+
+adoc = ReverseAdoc.convert_docx("document.docx")
+puts adoc
+----
+
+=== Ligne de commande
+
+[source,shell]
+----
+crystal-reverse-adoc input.html
+crystal-reverse-adoc input.html -o output.adoc
+crystal-reverse-adoc document.docx
+crystal-reverse-adoc -v
+crystal-reverse-adoc -h
+----
+
+== Elements supportes
+
+[cols="1,1"]
+|===
+| HTML | AsciiDoc
+
+| `<h1>` a `<h6>` | `= Titre` a `====== Titre`
+| `<p>` | Paragraphe
+| `<strong>`, `<b>` | `*gras*`
+| `<em>`, `<i>` | `_italique_`
+| `<code>` | `\`code\``
+| `<pre><code>` | Bloc source avec detection du langage
+| `<a href>` | `link:url[texte]` ou `https://url[texte]`
+| `<img>` | `image::src[alt]`
+| `<ul>/<li>` | `* element`
+| `<ol>/<li>` | `. element`
+| `<dl>/<dt>/<dd>` | `terme:: definition`
+| `<table>` | Tableau AsciiDoc
+| `<blockquote>` | Bloc de citation
+| `<hr>` | `'''`
+| `<br>` | Saut de ligne
+| `<sup>` | `^texte^`
+| `<sub>` | `~texte~`
+| `<del>`, `<s>` | `[.line-through]#texte#`
+| Divs d'avertissement | `NOTE:`, `TIP:`, etc.
+|===
+
+== Developpement
+
+[source,shell]
+----
+crystal spec
+crystal tool format src/ spec/
+----
+
+== Licence
+
+MIT
