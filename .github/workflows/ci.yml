@@ -19,6 +19,7 @@ jobs:
       - run: shards install
       - run: crystal spec
       - run: crystal tool format --check src/ spec/
+      - run: bin/ameba
 
   build:
     runs-on: ubuntu-latest
