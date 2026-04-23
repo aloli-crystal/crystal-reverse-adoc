@@ -261,7 +261,7 @@ describe ReverseAdoc do
 
   describe "VERSION" do
     it "has a version" do
-      ReverseAdoc::VERSION.should eq "2.0.0"
+      ReverseAdoc::VERSION.should eq "2.0.0.2"
     end
 
     it "has an upstream version" do

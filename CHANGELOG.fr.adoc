@@ -3,6 +3,29 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v2.0.0.2 — 2026-04-23
+
+Suite de tests d'intégration pour le pipeline HTML → AsciiDoc, en
+complément des specs unitaires par balise. Une fixture HTML réaliste
+de style article fait un aller-retour à travers `ReverseAdoc.convert`
+et la sortie AsciiDoc est contrôlée sur ses marqueurs structurels
+(titres, blocs de code fenced, listes, citations, règles horizontales,
+tableaux) ainsi que sur les invariants de document (séparation des
+paragraphes, ordre des titres, déterminisme, `<head>` ignoré,
+commentaires supprimés).
+
+* 3 nouveaux fichiers de specs sous `spec/integration/` : **sanity**
+  (trailing newline, mots préservés, pas de balises résiduelles),
+  **full_document** (fixture `article.html` → AsciiDoc avec tous
+  les marqueurs attendus) et **structure** (séparation
+  paragraphes/titres, déterminisme, `<head>` et commentaires
+  ignorés). **11 tests d'intégration, 46 tests unitaires, 57 au
+  total — tous verts.**
+* Nouveau helper `IntegrationHelper` dans
+  `spec/integration/spec_helper.cr` avec les primitives `convert`
+  et `fixture`, et une fixture
+  `spec/integration/fixtures/article.html`.
+
 == v2.0.0.1 — 2026-04-22
 
 * Ajout du linter *ameba* à la CI avec configuration `.ameba.yml` partagée alignée sur l'écosystème Crystal.
