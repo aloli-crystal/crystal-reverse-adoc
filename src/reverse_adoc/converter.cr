@@ -8,7 +8,14 @@ module ReverseAdoc
     end
 
     # Convert an HTML string to AsciiDoc.
+    #
+    # An empty or whitespace-only input short-circuits to an empty
+    # string because `XML.parse_html` raises `Document is empty` on a
+    # blank input — which would otherwise leak as a spurious error to
+    # any caller that fetches HTML over the network without guarding
+    # the empty-body case.
     def convert(html : String) : String
+      return "" if html.strip.empty?
       doc = XML.parse_html(html)
       body = find_body(doc) || doc
       result = process_children(body)

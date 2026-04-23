@@ -3,6 +3,21 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v2.0.0.3 — 2026-04-23
+
+Correctif de robustesse : `ReverseAdoc.convert("")` (ou une entrée
+ne contenant que des espaces) déclenchait `XML::Error: Document is
+empty` depuis `XML.parse_html`. Le converter court-circuite
+désormais les entrées vides ou purement blanches vers une chaîne
+vide, ce qui est le comportement attendu lorsqu'un appelant
+transmet un corps de réponse HTTP vide.
+
+* `convert` gagne un garde d'une ligne
+  `return "" if html.strip.empty?` en tête.
+* 2 nouveaux cas de test unitaires (`convert` avec `""` et avec
+  uniquement des espaces) et le test d'intégration précédemment
+  neutralisé est réactivé.
+
 == v2.0.0.2 — 2026-04-23
 
 Suite de tests d'intégration pour le pipeline HTML → AsciiDoc, en

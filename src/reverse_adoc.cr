@@ -4,7 +4,7 @@ require "./reverse_adoc/converters/*"
 require "./reverse_adoc/docx"
 
 module ReverseAdoc
-  VERSION          = "2.0.0.2"
+  VERSION          = "2.0.0.3"
   UPSTREAM_VERSION = "2.0.0"
 
   # Convert an HTML string to AsciiDoc.

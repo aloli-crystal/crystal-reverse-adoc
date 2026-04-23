@@ -3,11 +3,13 @@ require "./spec_helper"
 # Baseline check: the converter runs without raising on trivial input
 # and produces the minimal expected output.
 describe "Integration · sanity" do
-  it "converts a whitespace-only document to whitespace-only output" do
-    # Note: the underlying `XML.parse_html` raises `Document is empty`
-    # on a fully empty string, which is a separate bug to fix. Here
-    # we check the smallest non-empty input that the parser accepts.
-    IntegrationHelper.convert("<p> </p>").strip.size.should be <= 1
+  it "converts an empty document to an empty string" do
+    # Empty / whitespace-only inputs short-circuit inside `convert`
+    # to avoid `XML.parse_html` raising "Document is empty". This
+    # matters when the caller fetches HTML over the network and the
+    # server happens to return a blank body.
+    IntegrationHelper.convert("").should eq("")
+    IntegrationHelper.convert("   \n  \t\n").should eq("")
   end
 
   it "always ends non-empty output with a trailing newline" do

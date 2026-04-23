@@ -2,6 +2,16 @@ require "./spec_helper"
 
 describe ReverseAdoc do
   describe ".convert" do
+    describe "edge cases" do
+      it "returns an empty string for an empty input" do
+        ReverseAdoc.convert("").should eq ""
+      end
+
+      it "returns an empty string for a whitespace-only input" do
+        ReverseAdoc.convert("   \n  \t\n").should eq ""
+      end
+    end
+
     describe "headings" do
       it "converts h1" do
         ReverseAdoc.convert("<h1>Title</h1>").should eq "= Title\n"
@@ -261,7 +271,7 @@ describe ReverseAdoc do
 
   describe "VERSION" do
     it "has a version" do
-      ReverseAdoc::VERSION.should eq "2.0.0.2"
+      ReverseAdoc::VERSION.should eq "2.0.0.3"
     end
 
     it "has an upstream version" do

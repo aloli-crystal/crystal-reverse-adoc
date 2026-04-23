@@ -3,6 +3,21 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v2.0.0.3 — 2026-04-23
+
+Robustness fix: `ReverseAdoc.convert("")` (or a whitespace-only
+input) used to crash with `XML::Error: Document is empty` from
+`XML.parse_html`. The converter now short-circuits empty /
+whitespace-only inputs to an empty string, which is the expected
+behaviour when a caller feeds an HTTP response body that happens
+to be blank.
+
+* `convert` gains a one-line guard `return "" if html.strip.empty?`
+  at the top.
+* 2 new unit-test cases (`convert` with `""` and with whitespace
+  only) plus the previously-neutralised integration test is
+  re-enabled.
+
 == v2.0.0.2 — 2026-04-23
 
 Integration test suite for the HTML → AsciiDoc pipeline, on top of
