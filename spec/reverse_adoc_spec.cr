@@ -1,4 +1,5 @@
 require "./spec_helper"
+require "yaml"
 
 describe ReverseAdoc do
   describe ".convert" do
@@ -270,12 +271,17 @@ describe ReverseAdoc do
   end
 
   describe "VERSION" do
-    it "has a version" do
-      ReverseAdoc::VERSION.should eq "2.0.0.3"
+    it "VERSION matche shard.yml (compile-time read, pas de désynchro possible)" do
+      yml = YAML.parse(File.read(File.join(__DIR__, "..", "shard.yml")))
+      ReverseAdoc::VERSION.should eq(yml["version"].as_s)
     end
 
-    it "has an upstream version" do
-      ReverseAdoc::UPSTREAM_VERSION.should eq "2.0.0"
+    it "VERSION est au format de portage X.Y.Z[.W]" do
+      ReverseAdoc::VERSION.should match(/^\d+\.\d+\.\d+(\.\d+)?$/)
+    end
+
+    it "UPSTREAM_VERSION = trois premiers composants de VERSION (convention de portage)" do
+      ReverseAdoc::UPSTREAM_VERSION.should eq(ReverseAdoc::VERSION.split(".")[0..2].join("."))
     end
   end
 end
