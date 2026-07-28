@@ -2,13 +2,14 @@
 
 == Ajouter la dependance
 
-Ajoutez crystal-reverse-adoc dans votre `shard.yml` :
+Ajoutez reverse-adoc dans votre `shard.yml` :
 
 [source,yaml]
 ----
 dependencies:
-  crystal-reverse-adoc:
-    github: aloli-crystal/crystal-reverse-adoc
+  reverse-adoc:
+    github: aloli-crystal/reverse-adoc
+    version: "~> 2.0.0.5"
 ----
 
 Puis lancez :

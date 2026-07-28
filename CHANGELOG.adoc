@@ -3,6 +3,12 @@
 :toc-title: Versions
 :toclevels: 2
 
+== v2.0.0.5 — 2026-07-28
+
+Rename the shard `crystal-reverse-adoc` → `reverse-adoc` (drop the
+`crystal-` prefix; the `aloli-crystal` org already carries the
+"Crystal" context).
+
 == v2.0.0.3 — 2026-04-23
 
 Robustness fix: `ReverseAdoc.convert("")` (or a whitespace-only

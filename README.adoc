@@ -1,4 +1,4 @@
-= crystal-reverse-adoc
+= reverse-adoc
 
 Converts HTML to AsciiDoc. Crystal port of the https://github.com/xijo/reverse_adoc[reverse_adoc] Ruby gem (v2.0.0).
 
@@ -9,8 +9,9 @@ Add the dependency to your `shard.yml`:
 [source,yaml]
 ----
 dependencies:
-  crystal-reverse-adoc:
-    github: aloli-crystal/crystal-reverse-adoc
+  reverse-adoc:
+    github: aloli-crystal/reverse-adoc
+    version: "~> 2.0.0.5"
 ----
 
 Run `shards install`.
@@ -42,11 +43,11 @@ puts adoc
 
 [source,shell]
 ----
-crystal-reverse-adoc input.html
-crystal-reverse-adoc input.html -o output.adoc
-crystal-reverse-adoc document.docx
-crystal-reverse-adoc -v
-crystal-reverse-adoc -h
+reverse-adoc input.html
+reverse-adoc input.html -o output.adoc
+reverse-adoc document.docx
+reverse-adoc -v
+reverse-adoc -h
 ----
 
 == Supported elements
