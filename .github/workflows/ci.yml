@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        crystal: ["1.19.0", "latest"]
+        crystal: ["1.19.0", "1.19.1"]
     container:
       image: crystallang/crystal:${{ matrix.crystal }}
     steps:
@@ -24,7 +24,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: crystallang/crystal:latest
+      image: crystallang/crystal:1.19.1
     steps:
       - uses: actions/checkout@v4
       - run: shards build
